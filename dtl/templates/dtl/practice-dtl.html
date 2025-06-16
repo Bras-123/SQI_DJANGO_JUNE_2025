@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django template language</title>
+</head>
+<body>
+    <h1>Django template language Demo</h1>
+    <div>
+    <h2>Hello, {{ username }} </h2>
+    <h3>You have {{no_of_messages}} messages</h3>
+    {% if is_logged_in %}
+    <ol>
+        {% for message in messages %}
+                    <li> {{message}} </li>
+        {% endfor %}
+    </ol>
+        {% else %}
+        <p>You need to log in to view your messages</p>
+        {% endif %}
+    </div>
+    
+</body>
+</html>

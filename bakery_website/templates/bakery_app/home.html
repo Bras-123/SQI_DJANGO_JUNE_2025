@@ -1,0 +1,22 @@
+{% extends 'bakery_app/base.html' %}
+
+{% block title %}Welcome to The Golden Crust Bakery{% endblock %}
+
+{% block content %}
+    <h2>Welcome to Our Bakery!</h2>
+    <p>Freshly baked goods, made with love, every single day. We invite you to explore our delicious offerings.</p>
+    <a href="{% url 'menu' %}" class="btn">Explore Our Menu</a>
+
+    <div id="newsletterModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Join Our Newsletter!</h3>
+            <p>Get the latest news, special offers, and a dash of sweetness delivered to your inbox.</p>
+            <form>
+                <input type="email" placeholder="Enter your email" required style="width: 80%; padding: 8px;">
+                <br><br>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

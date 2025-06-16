@@ -1,0 +1,14 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block title %}Our Services{% endblock %}
+
+{% block content %}
+    <h1>Our Services</h1>
+    <p>We offer a wide range of professional services to meet your needs.</p>
+    <ul>
+        {% for service in services %}
+            <li>{{ service }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

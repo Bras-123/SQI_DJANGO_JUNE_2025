@@ -1,0 +1,15 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+
+{% block title %}Client Testimonials{% endblock %}
+
+{% block content %}
+    <h1>What Our Clients Say</h1>
+    {% for name, quote in testimonials.items %}
+        <div style="border-left: 3px solid #ddd; padding-left: 15px; margin-bottom: 20px;">
+            <h3>{{ name }}</h3>
+            <p><em>"{{ quote }}"</em></p>
+        </div>
+    {% endfor %}
+{% endblock %}

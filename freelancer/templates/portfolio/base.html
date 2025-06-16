@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Freelancer Portfolio{% endblock %}</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; margin: 0; background-color: red; }
+        .container { max-width: 960px; margin: 20px auto; padding: 0 20px; }
+        header { background: #333; color: #fff; padding: 1rem 0; }
+        nav { display: flex; justify-content: center; }
+        nav a { color: #fff; padding: 0 15px; text-decoration: none; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        .content { background: #fff; padding: 2rem; border-radius: 5px; margin-top: 20px; }
+        footer { text-align: center; padding: 20px; margin-top: 20px; color: #777; }
+        h1, h2, h3 { color: #333; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="{% url 'testimonials' %}">Testimonials</a>
+            <a href="{% url 'case_studies' %}">Case Studies</a>
+            <a href="{% url 'blog' %}">Blog</a>
+            <a href="{% url 'pricing' %}">Pricing</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Your Name | Freelancer Portfolio</p>
+    </footer>
+
+</body>
+</html>

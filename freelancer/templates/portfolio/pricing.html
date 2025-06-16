@@ -1,0 +1,15 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}Pricing Plans{% endblock %}
+
+{% block content %}
+    <h1>Our Pricing</h1>
+    <p>Simple, transparent pricing for projects of all sizes.</p>
+    {% for service, price in pricing_data.items %}
+        <div style="padding: 10px; border-bottom: 1px solid #eee;">
+            <h3>{{ service }}</h3>
+            <p><strong>Price:</strong> {{ price }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "partials/base.html"  %}
+
+{% block content %}
+<h1>Authors Ordered by DOB</h1>
+      {% for author in authors_dob  %}
+        <p>First_name : {{ author.first_name }} </p>
+        <p>last_name : {{author.last_name}} </p>
+        <p>birth_date: {{author.birth_date}} </p>
+      {% endfor %}   
+
+<h1>Authors Ordered by Default</h1>
+      {% for author in authors %}
+        <p>First_name : {{ author.first_name }} </p>
+        <p>last_name : {{author.last_name}} </p>
+        <p>birth_date: {{author.birth_date}} </p>
+      {% endfor %}
+
+<h1>Books and their info ordered by their titles</h1>
+      {% for book in books %}
+        <p> {{ book.title }} </p>
+        <p> {{ book.author }} </p>
+        <p>pusblished_on: {{ book.published_on }} </p>
+        <p>Number_of_pages: {{ book.number_of_pages }} </p>
+      {% endfor %}
+
+<h1>Authors and their books</h1>
+      {% for author in authors %}
+        <p>First_name : {{ author.first_name }} </p>
+        <p>last_name : {{author.last_name}} </p>
+        <p>birth_date: {{author.birth_date}} </p>
+
+        <h3>Books</h3>
+        {% for book in author.book_set.all %}
+            <p> {{ book.title }} </p>
+            <p>pusblished_on: {{ book.published_on }} </p>
+            <p>Number_of_pages: {{ book.number_of_pages }} </p>
+        {% endfor %}
+      {% endfor %}
+
+
+
+{% endblock content %}

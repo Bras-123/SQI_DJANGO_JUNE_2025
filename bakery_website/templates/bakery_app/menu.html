@@ -1,0 +1,13 @@
+{% extends 'bakery_app/base.html' %}
+{% block title %}Our Menu - The Golden Crust Bakery{% endblock %}
+{% block content %}
+    <h2>Our Delicious Menu</h2>
+    {% for category, items in menu_items.items %}
+        <h3>{{ category }}</h3>
+        <ul>
+            {% for item in items %}
+                <li><strong>{{ item.name }}</strong> - {{ item.price }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+{% endblock %}

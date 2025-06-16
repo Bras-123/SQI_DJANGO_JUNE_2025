@@ -1,0 +1,16 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}Our Blog{% endblock %}
+
+{% block content %}
+    <h1>From the Blog</h1>
+    {% for post in posts %}
+        <article style="margin-bottom: 25px;">
+            <h2>{{ post.title }}</h2>
+            <p><small>Posted on: {{ post.date }}</small></p>
+            <p>{{ post.excerpt }}</p>
+            <a href="#">Read More</a>
+        </article>
+    {% endfor %}
+{% endblock %}
