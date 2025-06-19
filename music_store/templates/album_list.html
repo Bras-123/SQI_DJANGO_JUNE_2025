@@ -6,9 +6,15 @@
     <h2>All Albums</h2>
     <ul>
         {% for album in albums %}
-            <li><strong>{{ album.title }}</strong> by {{ album.artist.name }} (Released: {{ album.release_date|date:"F j, Y" }})</li>
+            <li>
+                <strong>
+                    <a href="{% url 'music:album_detail' album.pk %}">{{ album.title }}</a>
+                </strong>
+            </li>
         {% empty %}
             <li>No albums found.</li>
         {% endfor %}
     </ul>
 {% endblock %}
+
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Recipes</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; }
+        h1 { color: #333; }
+        .recipe { border: 1px solid #ddd; padding: 1rem; margin-bottom: 1rem; border-radius: 5px; }
+        .recipe img { max-width: 100px; height: 100px; float: left; margin-right: 1rem; border-radius: 5px; }
+        .add-recipe-link { display: inline-block; margin-bottom: 2rem; background: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>All Recipes</h1>
+    <a href="{% url 'add_recipe' %}" class="add-recipe-link">Add New Recipe</a>
+    {% for recipe in recipes %}
+        <div class="recipe">
+            {% if recipe.image %}
+                <img src="{{ recipe.image.url }}" alt="Image of {{ recipe.name }}">
+            {% else %}
+                <img src="{{ recipe.cover_image.url }}" alt="Image of {{ recipe.name }}">
+            {% endif %}
+            <h2>{{ recipe.name }}</h2>
+            <p><strong>Cooking Time:</strong> {{ recipe.cooking_time }} minutes</p>
+        </div>
+    {% empty %}
+        <p>No recipes have been added yet.</p>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,72 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ book.title }}</h2>
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Published:</strong> {{ book.publication_date|date:"F Y" }}</p>
+
+    <hr>
+
+    <h3>Reviews</h3>
+    {% for review in reviews %}
+        <div class="review">
+            <p><strong>Rating:</strong> {{ review.rating_as_stars }}</p>
+            {% comment %} <p><strong>Rating: {{ review.rating }}/5</strong></p> {% endcomment %}
+            <p>"{{ review.comment }}"</p>
+            <p class="review-meta">By {{ review.reviewer_name }} on {{ review.created_at|date:"F j, Y" }}</p>
+        </div>
+    {% empty %}
+        <p>No reviews yet. Be the first to add one!</p>
+    {% endfor %}
+
+    <hr>
+
+    <h3>Add Your Review</h3>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-field">
+            {{ form.reviewer_name.label_tag }}
+            {{ form.reviewer_name }}
+            {% if form.reviewer_name.errors %}
+                <div class="errorlist">
+                    {% for error in form.reviewer_name.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-field">
+            {{ form.rating.label_tag }}
+            {{ form.rating }}
+            {% if form.rating.help_text %}
+                <small style="color: #6c757d; display: block;">{{ form.rating.help_text }}</small>
+            {% endif %}
+            {% if form.rating.errors %}
+                <div class="errorlist">
+                    {% for error in form.rating.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-field">
+            {{ form.comment.label_tag }}
+            {{ form.comment }}
+            {% if form.comment.errors %}
+                <div class="errorlist">
+                    {% for error in form.comment.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn">Submit Review</button>
+    </form>
+{% endblock %}
+

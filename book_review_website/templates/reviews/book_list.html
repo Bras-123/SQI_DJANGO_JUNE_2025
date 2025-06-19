@@ -1,0 +1,18 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %}All Books{% endblock %}
+
+{% block content %}
+    <h2>All Books</h2>
+    <ul class="book-list">
+        {% for book in books %}
+            <li>
+                <a href="{% url 'book_detail' pk=book.pk %}">
+                    {{ book.title }} by {{ book.author }}
+                </a>
+            </li>
+        {% empty %}
+            <li>No books have been added yet.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

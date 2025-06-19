@@ -6,9 +6,20 @@
     <h2>All Artists</h2>
     <ul>
         {% for artist in artists %}
-            <li>{{ artist.name }} (Debut: {{ artist.debut_year }})</li>
+            <li>
+            <a href="{% url 'music:artist_detail' artist.pk %}">
+                {{ artist.name }}
+            </a>
+            (Debut: {{ artist.debut_year }})
+            </li>
+            {% if artist.artist_image %}
+                <img width="100" height="100" src="{{ artist.artist_image.url  }}" alt="{{ artist }}'s image">
+            {% else %}
+            <p>No image for {{ artist }}</p>
+            {% endif %}
         {% empty %}
             <li>No artists found.</li>
         {% endfor %}
     </ul>
+
 {% endblock %}

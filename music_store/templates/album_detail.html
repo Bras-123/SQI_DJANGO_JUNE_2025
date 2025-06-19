@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ album.title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ album.title }}</h2>
+    <p>
+        <strong>Artist:</strong>
+        <a href="{% url 'music:artist_detail' pk=album.artist.pk %}">{{ album.artist.name }}</a>
+    </p>
+    <p><strong>Release Date:</strong> {{ album.release_date|date:"F j, Y" }}</p>
+
+    {% if album.album_cover %}
+        <img src="{{ album.album_cover.url }}" alt="Cover for {{ album.title }}" style="max-width: 400px; height: auto; border-radius: 5px;">
+    {% else %}
+        <p>No cover image available.</p>
+    {% endif %}
+{% endblock %}
